@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form method="POST" class="col s12" enctype="multipart/form-data">
+      {% csrf_token %} {{new_form.as_p}}
+
+      <!--Below is our main file upload input -->
+      <input type="file" name="document" />
+      <p>
+        <button
+          type="submit"
+          class="waves-effect waves-light btn"
+          style="background-color: teal"
+        >
+          Publish
+        </button>
+      </p>
+      {% comment %} <h1>{{fileurl}}</h1> {% endcomment %}
+    </form>
+    {% if fileurl %}
+    <p>
+      File uploaded at:
+      <a href="{{ fileurl }}">{{ fileurl }}</a>
+    </p>
+    {% endif %}
+  </body>
+</html>
